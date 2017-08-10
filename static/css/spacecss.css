@@ -1,0 +1,10 @@
+body{
+    background-color: #000000;
+}
+.info_window{
+    display: none; 
+    background-color: rgba(255, 255, 255, 0.4);
+    position: fixed;
+    width: 200px;
+}
+.star:hover .info_window {display: block}

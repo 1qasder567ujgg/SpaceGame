@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title%} {{title}}{% endblock title%}
+{% block CSS %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/spacecss.css' %}">
+{% endblock CSS%}
+{% block content %}
+{% for SpaceSystem in SpaceSystems %}
+<div class="star" style="position: absolute; width: {{SpaceSystem.size}}px; height: {{SpaceSystem.size}}px; border-radius: 50%; left: {{SpaceSystem.pos_x}}px; top: {{SpaceSystem.pos_y}}px; background-color: {{SpaceSystem.color}}">
+    
+    <div class="info_window">
+        <h3>{{SpaceSystem.name}}</h3>
+        <p>{{SpaceSystem.temp}}</p>
+        <p>{{SpaceSystem.mass}}</p>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+    $(document).ready(
+        function (){
+            $(".star").hover(
+                function(){
+                    $(this).find(".info_window").show()
+                }
+            )
+        }
+    )
+</script> -->
+{% endfor %}
+{% endblock content%}
+
+<!-- django admin command space/management closepoll-->
