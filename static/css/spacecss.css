@@ -7,4 +7,7 @@ body{
     position: fixed;
     width: 200px;
 }
-.star:hover .info_window {display: block}
+.star:hover .info_window {
+    display: block;
+    overflow: hidden;
+}
