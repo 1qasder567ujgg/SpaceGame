@@ -18,7 +18,7 @@
     };
 </script> -->
 {% for SpaceSystem in SpaceSystems %}
-<div class="star" style="position: absolute; width: {{SpaceSystem.size}}px; height: {{SpaceSystem.size}}px; border-radius: 50%; left: {{SpaceSystem.pos_x}}px; top: {{SpaceSystem.pos_y}}px; background-color: {{SpaceSystem.color}}">
+<div class="star" style="position: absolute; width: {{SpaceSystem.STAR_SIZE_PX}}px; height: {{SpaceSystem.STAR_SIZE_PX}}px; border-radius: 50%; left: {{SpaceSystem.pos_x}}px; top: {{SpaceSystem.pos_y}}px; background-color: {{SpaceSystem.color}}">
     
     <div class="info_window">
         <h3>{{SpaceSystem.name}}</h3>
