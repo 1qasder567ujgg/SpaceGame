@@ -17,10 +17,10 @@ class Command(BaseCommand):
         )
         parser.add_argument(
             '--flush',
-            action='store',
+            action='store_true',
             dest='flush',
-            default='n',
-            help='Flush existing stars? [y/n]',
+            default=False,
+            help='Flush existing stars',
         )
 
     def handle(self, *args, **options): 
@@ -37,8 +37,8 @@ class Command(BaseCommand):
         def getStarXY():
             safe_range = 10*StarSystem.STAR_SIZE_PX
             for i in range(100):
-                x = random.randint(5, 1200)
-                y = random.randint(5, 800)
+                x = random.randint(5, 1300)
+                y = random.randint(5, 700)
                 if StarSystem.objects.filter(pos_x__range=[x - safe_range, x + safe_range], \
                                              pos_y__range=[y - safe_range, y + safe_range]).count() == 0:
                     break
@@ -49,7 +49,7 @@ class Command(BaseCommand):
 
         N = int(options['stars_count'])
 
-        if options['flush'] == 'y':
+        if options['flush']:
             StarSystem.objects.all().delete()
 
         for i in range(N):
