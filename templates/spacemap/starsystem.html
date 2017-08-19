@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title%} {{title}}{% endblock title%}
+{% block CSS %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/spacecss.css' %}">
+{% endblock CSS%}
+{% block content %}
+{% for Planet in Planets %}
+<a href="/space/{{Star.id}}/{{Planet.id}}"><div class="planet" style="position: absolute; width: {{Planet.PLANET_SIZE_PX}}px; height: {{Planet.PLANET_SIZE_PX}}px; border-radius: 50%; left: {{Planet.distance}}px; top: 100px; background-color: {{Planet.color}}">
+    
+    <div class="info_window">
+        <h3>{{Planet.name}}</h3>
+        <p>Inhabited: {{Planet.inhabited}}</p>
+        <p>Has atmosphere: {{Planet.atmosphere}}</p>
+    </div>
+</div></a>
+{% endfor %}
+{% endblock content%}
+
+<!-- django admin command space/management closepoll-->

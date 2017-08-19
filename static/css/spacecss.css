@@ -10,3 +10,6 @@ body{
 .star:hover .info_window {
     display: block;
 }
+.planet:hover .info_window {
+    display: block;
+}

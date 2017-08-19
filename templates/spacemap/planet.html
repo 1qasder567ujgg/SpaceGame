@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title%} {{title}}{% endblock title%}
+{% block CSS %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/spacecss.css' %}">
+{% endblock CSS%}
+{% block content %}
+<ul>
+{% for City in Cities %}
+<div class="city">
+     <li>{{City.name}}</li>   
+</div>
+{% endfor %}
+</ul>
+{% endblock content%}
+
+<!-- django admin command space/management closepoll-->

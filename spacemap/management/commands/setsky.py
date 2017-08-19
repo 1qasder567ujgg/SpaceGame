@@ -26,7 +26,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options): 
 
         def getStarXY():
-            safe_range = int(3.5*StarSystem.STAR_SIZE_PX)
+            safe_range = int(random.randint(2, 12)*StarSystem.STAR_SIZE_PX)
             for i in range(100):
                 x = random.randint(5, 1280)
                 y = random.randint(5, 650)
@@ -38,9 +38,9 @@ class Command(BaseCommand):
 
 
         def getPlanetDistance(star_system):
-            safe_range = int(3.5*Planet.PLANET_SIZE_PX)
+            safe_range = int(5*Planet.PLANET_SIZE_PX)
             for i in range(100):
-                dist = random.randint(5, 100)
+                dist = random.randint(5, 1000)
                 if Planet.objects.filter(star_system=star_system, 
                                              distance__range=[dist - safe_range, 
                                                             dist + safe_range]).count() == 0:
@@ -97,7 +97,8 @@ class Command(BaseCommand):
                                     atmosphere=random.choice(booleans), 
                                     distance=getPlanetDistance(star_system),
                                     diameter=random.randint(1, 50),
-                                    name=getName(Planet)
+                                    name=getName(Planet),
+                                    color=getWebColor()
                                     )
                 planet.save()
 
@@ -108,9 +109,9 @@ class Command(BaseCommand):
                     if population < 100000:
                         city_status = 'Village'
                     elif population > 1000000:
-                        city_status = 'Town'
-                    else:
                         city_status = 'City'
+                    else:
+                        city_status = 'Town'
 
                     city = City(planet=planet,
                                 inhabited=random.choice(booleans),
