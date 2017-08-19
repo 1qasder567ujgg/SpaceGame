@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import StarSystem, Planets
+from .models import StarSystem, Planet
 
 # Create your views here.
 def space_view(request):
@@ -17,7 +17,7 @@ def system_view(request, id):
     planets = Planet.objects.filter(star_system=star)
     context = {
                 'title':'Planet Map', 
-                'Star':star
+                'Star':star,
                 'Planets':planets
     }
     return render(request, "spacemap/starsystem.html", context)
