@@ -13,6 +13,7 @@ def space_view(request):
 
 def system_view(request, s_id):
     star = StarSystem.objects.get(id=int(s_id))
+    print(request.user)
     planets = Planet.objects.filter(star_system=star)
     context = {
                 'title':'Start System Map', 
