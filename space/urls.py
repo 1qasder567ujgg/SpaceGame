@@ -21,6 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include("spacemap.urls", namespace="space")),
+    url(r'^', include("character.urls", namespace="character")),
 ]
 
 if settings.DEBUG:
